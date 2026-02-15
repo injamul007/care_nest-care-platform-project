@@ -15,7 +15,7 @@ The platform allows users to explore available care services, book caregivers ba
 ---
 
 ## 🌐 Live URL
-🔗 **Live Site:** *(will add live URL Here)*  
+🔗 **Live Site:** *(https://carenest-khaki.vercel.app/)*
 
 ---
 
