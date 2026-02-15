@@ -21,10 +21,10 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-gradient-to-r from-white via-white/95 to-white/90 backdrop-blur-xl border-b border-border shadow-sm">
+    <header className="sticky top-0 z-50 bg-linear-to-r from-white via-white/95 to-white/90 backdrop-blur-xl border-b border-border shadow-sm">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
         {/* Logo Section */}
-        <Link href="/" className="flex flex-col leading-tight flex-shrink-0">
+        <Link href="/" className="flex flex-col leading-tight shrink-0">
           <div className="flex items-center gap-2">
             {/* CareNest Icon */}
             <div className="relative">
@@ -39,7 +39,7 @@ export default function Navbar() {
             </div>
 
             <div className="flex flex-col">
-              <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] bg-clip-text text-transparent">
+              <span className="text-xl sm:text-2xl font-bold bg-linear-to-r from-(--primary) to-(--secondary) bg-clip-text text-transparent">
                 CareNest
               </span>
               <span className="text-xs text-gray-500 hidden sm:block">
@@ -55,8 +55,8 @@ export default function Navbar() {
             href="/"
             className={`px-3 py-2 rounded-lg font-medium transition-all duration-300 ${
               pathname === "/"
-                ? "text-[var(--primary)] bg-primary/10 border-b-2 border-[var(--primary)]"
-                : "text-[var(--primary)] hover:text-[var(--primary)] hover:bg-primary/5"
+                ? "text-(--primary) bg-primary/10 border-b-2 border-(--primary)"
+                : "text-(--primary) hover:text-(--primary) hover:bg-primary/5"
             }`}
           >
             Home
@@ -65,8 +65,8 @@ export default function Navbar() {
             href="/services"
             className={`px-3 py-2 rounded-lg font-medium transition-all duration-300 ${
               pathname === "/services"
-                ? "text-[var(--primary)] bg-primary/10 border-b-2 border-[var(--primary)]"
-                : "text-[var(--primary)] hover:text-[var(--primary)] hover:bg-primary/5"
+                ? "text-(--primary) bg-primary/10 border-b-2 border-(--primary)"
+                : "text-(--primary) hover:text-(--primary) hover:bg-primary/5"
             }`}
           >
             Services
@@ -75,8 +75,8 @@ export default function Navbar() {
             href="/about"
             className={`px-3 py-2 rounded-lg font-medium transition-all duration-300 ${
               pathname === "/about"
-                ? "text-[var(--primary)] bg-primary/10 border-b-2 border-[var(--primary)]"
-                : "text-[var(--primary)] hover:text-[var(--primary)] hover:bg-primary/5"
+                ? "text-(--primary) bg-primary/10 border-b-2 border-(--primary)"
+                : "text-(--primary) hover:text-(--primary) hover:bg-primary/5"
             }`}
           >
             About
@@ -85,8 +85,8 @@ export default function Navbar() {
             href="/login"
             className={`px-3 py-2 rounded-lg font-medium transition-all duration-300 ${
               pathname === "/login"
-                ? "text-[var(--primary)] bg-primary/10 border-b-2 border-[var(--primary)]"
-                : "text-[var(--primary)] hover:text-[var(--primary)] hover:bg-primary/5"
+                ? "text-(--primary) bg-primary/10 border-b-2 border-(--primary)"
+                : "text-(--primary) hover:text-(--primary) hover:bg-primary/5"
             }`}
           >
             Login
@@ -95,7 +95,7 @@ export default function Navbar() {
           {/* CTA Button */}
           <Link
             href="/services"
-            className="ml-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[var(--accent)] to-orange-400 text-white font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center gap-2"
+            className="ml-2 px-5 py-2.5 rounded-xl bg-linear-to-r from-(--accent) to-orange-400 text-white font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center gap-2"
           >
             <Calendar size={18} />
             <span>Book Now</span>
@@ -105,7 +105,7 @@ export default function Navbar() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-300 text-[var(--text)]"
+          className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-300 text-(--text)"
           aria-label="Toggle menu"
         >
           {isOpen ? (
@@ -118,7 +118,7 @@ export default function Navbar() {
 
       {/* Mobile Menu - Enhanced Drawer */}
       {isOpen && (
-        <div className="md:hidden fixed inset-0 top-[64px] z-40">
+        <div className="md:hidden fixed inset-0 top-16 z-40">
           {/* Backdrop */}
           <div
             className="absolute inset-0 bg-black/20 backdrop-blur-sm"
@@ -126,7 +126,7 @@ export default function Navbar() {
           />
 
           {/* Menu Panel */}
-          <div className="absolute top-0 left-0 right-0 bg-gradient-to-b from-white to-gray-50 shadow-2xl animate-in slide-in-from-top-2 duration-300">
+          <div className="absolute top-0 left-0 right-0 bg-linear-to-b from-white to-gray-50 shadow-2xl animate-in slide-in-from-top-2 duration-300">
             <div className="px-6 py-6 space-y-3 max-h-[calc(100vh-80px)] overflow-y-auto">
               {/* Menu Items with Icons */}
               {menuItems.map((item) => {
@@ -139,16 +139,14 @@ export default function Navbar() {
                     onClick={closeMenu}
                     className={`flex items-center gap-4 px-4 py-3.5 rounded-xl font-medium group transition-all duration-300 ${
                       isActive
-                        ? "bg-gradient-to-r from-primary/15 to-secondary/15 text-[var(--primary)] border-l-4 border-[var(--primary)]"
-                        : "text-[var(--primary)] hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 hover:text-[var(--primary)]"
+                        ? "bg-linear-to-r from-primary/15 to-secondary/15 text-(--secondary) border-l-4 border-(--secondary)"
+                        : "text-(--primary) hover:bg-linear-to-r hover:from-primary/10 hover:to-secondary/10 hover:text-(--primary)"
                     }`}
                   >
                     <Icon
                       size={22}
                       className={`group-hover:scale-110 transition-transform ${
-                        isActive
-                          ? "text-[var(--primary)]"
-                          : "text-[var(--primary)]"
+                        isActive ? "text-(--secondary)" : "text-(--primary)"
                       }`}
                     />
                     <span className="text-base">{item.label}</span>
@@ -157,14 +155,14 @@ export default function Navbar() {
               })}
 
               {/* Divider */}
-              <div className="my-2 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+              <div className="my-2 h-px bg-linear-to-r from-transparent via-border to-transparent" />
 
               {/* Book Now Button - Mobile */}
               <div className="pt-3">
                 <Link
                   href="/services"
                   onClick={closeMenu}
-                  className="flex items-center justify-center gap-3 w-full px-5 py-3.5 rounded-xl bg-gradient-to-r from-[var(--accent)] to-orange-400 text-white font-semibold hover:shadow-xl hover:shadow-orange-200 transition-all duration-300 group"
+                  className="flex items-center justify-center gap-3 w-full px-5 py-3.5 rounded-xl bg-linear-to-r from-(--accent) to-orange-400 text-white font-semibold hover:shadow-xl hover:shadow-orange-200 transition-all duration-300 group"
                 >
                   <Calendar
                     size={20}
