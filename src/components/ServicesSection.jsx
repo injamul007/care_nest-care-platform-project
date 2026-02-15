@@ -48,7 +48,7 @@ export default function ServicesSection() {
           {services.map((service) => (
             <div
               key={service.name}
-              className="group relative rounded-3xl bg-(--secondary)/40 p-8 shadow-sm transition-transform duration-700 ease-out hover:-translate-y-2 hover:shadow-xl"
+              className="group relative rounded-3xl border border-(--border)/40 bg-(--card)/50 backdrop-blur-lg p-8 shadow-sm transition-transform duration-700 ease-out hover:-translate-y-2 hover:shadow-xl"
             >
               {/* Soft Glow Accent */}
               <div className="absolute inset-0 rounded-3xl bg-(--primary) opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-10"></div>
@@ -58,8 +58,8 @@ export default function ServicesSection() {
                 <Image
                   src={service.img}
                   alt={service.name}
-                  width={42}
-                  height={42}
+                  // width={42}
+                  // height={42}
                   className="object-contain"
                 />
               </div>
