@@ -43,7 +43,7 @@ export default function HeroSection() {
   ];
 
   return (
-    <section className="relative min-h-[90vh] bg-(--background)">
+    <section className="relative min-h-[90vh] bg-linear-to-b from-[#0f323e] to-[#0f323e]">
       <Swiper
         modules={[Autoplay, Pagination, Navigation]}
         autoplay={{ delay: 5000, disableOnInteraction: false }}

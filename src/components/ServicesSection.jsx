@@ -1,66 +1,86 @@
 import Image from "next/image";
-import babyCareLogo from "../../public/baby_care_logo.png"
-import elderCareLogo from "../../public/elder_care_logo.png"
-import sickCareLogo from "../../public/sick_care_logo.png"
-
+import Link from "next/link";
+import babyCareLogo from "../../public/baby_care_logo.png";
+import elderCareLogo from "../../public/elder_care_logo.png";
+import sickCareLogo from "../../public/sick_care_logo.png";
 
 export default function ServicesSection() {
   const services = [
-    { name: "Baby Care", 
-      desc: "Trusted babysitters and newborn specialists.",
-      img: babyCareLogo },
+    {
+      name: "Baby Care",
+      desc: "Certified babysitters and newborn specialists ensuring safety, nurturing, and developmental support.",
+      img: babyCareLogo,
+      slug: "baby-care",
+    },
     {
       name: "Elderly Care",
-      desc: "Companionship, medication reminders and daily help.",
-      img: elderCareLogo
+      desc: "Compassionate caregivers offering companionship, medication reminders, and daily living assistance.",
+      img: elderCareLogo,
+      slug: "elderly-care",
     },
     {
       name: "Sick People Care",
-      desc: "Qualified carers for short-term recovery support.",
-      img: sickCareLogo
+      desc: "Professional short-term recovery support with personalized home care assistance.",
+      img: sickCareLogo,
+      slug: "sick-care",
     },
   ];
 
   return (
-    <section id="services" className="py-16">
-      <div className="container-max mx-auto">
+    <section
+      id="services"
+      className="relative py-24 bg-linear-to-b from-(--primary)/30 to-(--secondary)/20"
+    >
+      <div className="container-max">
+        {/* Section Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-2xl font-bold">Our Services</h2>
-          <p className="mt-2 text-(--text)/80">
-            Trusted caregiving solutions designed to support families with
-            comfort, dignity, and care.
+          <h2 className="text-3xl md:text-4xl font-extrabold text-(--text)">
+            Our Professional Care Services
+          </h2>
+          <p className="mt-4 text-lg text-(--text)/70">
+            Personalized caregiving solutions tailored to support your loved
+            ones with dignity, compassion, and reliability.
           </p>
         </div>
 
-        <div className="mt-8 grid gap-6 sm:grid-cols-3">
-          {services.map((s) => (
-            <article
-              key={s.name}
-              className="group rounded-2xl border bg-(--secondary)/40 p-6 shadow-sm hover:shadow-md transition-shadow"
+        {/* Services Grid */}
+        <div className="mt-16 grid gap-8 md:grid-cols-3">
+          {services.map((service) => (
+            <div
+              key={service.name}
+              className="group relative rounded-3xl bg-(--secondary)/40 p-8 shadow-sm transition-transform duration-700 ease-out hover:-translate-y-2 hover:shadow-xl"
             >
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-(--accent)/60 text-(--primary)">
+              {/* Soft Glow Accent */}
+              <div className="absolute inset-0 rounded-3xl bg-(--primary) opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-10"></div>
+
+              {/* Icon */}
+              <div className="relative z-10 mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-(--secondary)/50">
                 <Image
-                  src={s.img}
-                  alt={s.name}
-                  width={36}
-                  height={36}
+                  src={service.img}
+                  alt={service.name}
+                  width={42}
+                  height={42}
                   className="object-contain"
-                  priority
                 />
               </div>
-              <h3 className="text-lg font-semibold">{s.name}</h3>
-              <p className="mt-2 text-sm text-(--text)/70 line-clamp-1">
-                {s.desc}
-              </p>
-              <div className="mt-4">
-                <a
-                  href="#"
-                  className="inline-flex items-center gap-2 rounded-full bg-(--accent)/90 px-4 py-2 text-sm font-semibold text-(--text) transition-transform group-hover:translate-y-0.5"
+
+              {/* Content */}
+              <div className="relative z-10">
+                <h3 className="text-xl font-bold text-(--text)">
+                  {service.name}
+                </h3>
+                <p className="mt-4 text-sm leading-relaxed text-(--text)/70 line-clamp-2">
+                  {service.desc}
+                </p>
+
+                <Link
+                  href={`/service/${service.slug}`}
+                  className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-(--primary) transition-colors hover:text-(--accent)"
                 >
-                  View Details
-                </a>
+                  View Details →
+                </Link>
               </div>
-            </article>
+            </div>
           ))}
         </div>
       </div>

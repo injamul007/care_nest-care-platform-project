@@ -95,7 +95,7 @@ export default function Navbar() {
           {/* CTA Button */}
           <Link
             href="/services"
-            className="ml-2 px-5 py-2.5 rounded-xl bg-linear-to-r from-(--accent) to-orange-400 text-white font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center gap-2"
+            className="ml-2 px-5 py-2.5 rounded-xl bg-linear-to-r from-(--accent) to-orange-400 text-white font-semibold hover:shadow-lg hover:scale-105 transition-all duration-200 flex items-center gap-2"
           >
             <Calendar size={18} />
             <span>Book Now</span>

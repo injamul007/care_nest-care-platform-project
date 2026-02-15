@@ -128,9 +128,10 @@ body {
 }
 
 /* Smooth transitions for all interactive elements */
-* {
+/* a,
+button  {
   @apply transition-colors duration-200;
-}
+} */
 
 /* ===============================
    Stylish Scroll Arrow
