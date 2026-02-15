@@ -1,48 +1,129 @@
+"use client";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+import { useCallback } from "react";
 import Image from "next/image";
-import careBanner from "../../public/banner_care_pic.jpeg"
 import Link from "next/link";
 
-export default function HeroSection() {
-  return (
-    <section className="bg-(--secondary)/40 py-16">
-      <div className="container-max mx-auto grid gap-8 md:grid-cols-2 md:items-center">
-        <div className="space-y-6 px-2">
-          <h1 className="text-3xl font-extrabold leading-tight text-(--text) sm:text-4xl md:text-5xl">
-            Reliable Care for Your Loved Ones
-          </h1>
-          <p className="max-w-xl text-(--text)/80 text-lg">
-            At CareNest we connect you with compassionate, vetted caregivers for
-            babies, elders and the sick — so your family receives reliable
-            support at home when you need it most.
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <Link
-              href="/services"
-              className="rounded-full bg-(--primary) px-5 py-3 text-sm font-semibold text-white shadow"
-            >
-              Explore Services
-            </Link>
-            <Link
-              href="/learn-more"
-              className="rounded-full border border-transparent bg-white px-5 py-3 text-sm font-semibold text-(--secondary)/90"
-            >
-              Learn More
-            </Link>
-          </div>
-        </div>
+import babyCare from "../../public/slider-baby.png";
+import elderlyCare from "../../public/slider-elderly.jpeg";
+import sickCare from "../../public/slider-sick.jpeg";
 
-        <div className="px-2">
-          <div className="mx-auto max-w-md rounded-2xl bg-white p-6 shadow-md">
-            <div className="aspect-4/3 w-full rounded-lg bg-[linear-gradient(180deg,rgba(153,246,228,0.6),rgba(253,186,116,0.12))] flex items-center justify-center">
-              <div className="text-center p-6">
-                <Image src={careBanner} 
-                alt="CareNest Logo"
-                className="object-contain"
-                priority/>
+export default function HeroSection() {
+  const slides = [
+    {
+      image: babyCare,
+      title: "Reliable Baby Care at Home",
+      description:
+        "Certified and compassionate babysitters ensuring your child’s safety, comfort, and happiness.",
+      primaryBtn: "Explore Baby Care",
+      link: "/services",
+    },
+    {
+      image: elderlyCare,
+      title: "Professional Elderly Support",
+      description:
+        "Dedicated caregivers providing respectful and attentive care for your elderly loved ones.",
+      primaryBtn: "Explore Elderly Care",
+      link: "/services",
+    },
+    {
+      image: sickCare,
+      title: "Trusted Care for the Sick",
+      description:
+        "Experienced home care assistance for recovery, comfort, and daily medical support.",
+      primaryBtn: "Explore Services",
+      link: "/services",
+    },
+  ];
+
+  return (
+    <section className="relative min-h-[90vh] bg-(--background)">
+      <Swiper
+        modules={[Autoplay, Pagination, Navigation]}
+        autoplay={{ delay: 5000, disableOnInteraction: false }}
+        pagination={{ clickable: true }}
+        navigation
+        loop
+        className="h-[80vh]"
+      >
+        {slides.map((slide, index) => (
+          <SwiperSlide key={index}>
+            <div className="relative h-full w-full flex items-center">
+              {/* Background Image */}
+              <Image
+                src={slide.image}
+                alt={slide.title}
+                fill
+                priority={index === 0}
+                className="object-cover"
+              />
+
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-[rgba(15,118,110,0.55)]" />
+
+              {/* Content */}
+              <div className="relative z-10 container-max text-white">
+                <div className="max-w-2xl space-y-6">
+                  <h1 className="text-3xl md:text-5xl font-extrabold leading-tight">
+                    {slide.title}
+                  </h1>
+
+                  <p className="text-lg md:text-xl text-white/90">
+                    {slide.description}
+                  </p>
+
+                  <div className="flex gap-4 justify-center">
+                    <Link
+                      href={slide.link}
+                      className="px-6 py-3 rounded-full bg-(--accent) text-(--text) font-semibold shadow hover:opacity-90 transition"
+                    >
+                      {slide.primaryBtn}
+                    </Link>
+
+                    <Link
+                      href="/about"
+                      className="px-6 py-3 rounded-full border border-white text-white font-semibold hover:bg-white hover:text-(--primary) transition"
+                    >
+                      Learn More
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+
+      {/* Stylish scroll arrow */}
+      <div className="hero-arrow-container">
+        <div className="hero-arrow-ring" aria-hidden />
+        <button
+          onClick={useCallback(() => {
+            const target = document.getElementById("services");
+            if (target) return target.scrollIntoView({ behavior: "smooth" });
+            window.scrollBy({
+              top: window.innerHeight * 0.9,
+              behavior: "smooth",
+            });
+          }, [])}
+          className="hero-arrow-btn"
+          aria-label="Scroll to next section"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            className="w-5 h-5"
+          >
+            <path className="hero-chev" d="M6 9l6 6 6-6" />
+            <path className="hero-chev delay" d="M6 5l6 6 6-6" />
+          </svg>
+        </button>
       </div>
     </section>
   );
