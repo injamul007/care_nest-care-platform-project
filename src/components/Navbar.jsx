@@ -22,7 +22,7 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 bg-linear-to-r from-white via-white/95 to-white/90 backdrop-blur-xl border-b border-border shadow-sm">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
+      <nav className="container-max mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
         {/* Logo Section */}
         <Link href="/" className="flex flex-col leading-tight shrink-0">
           <div className="flex items-center gap-2">
