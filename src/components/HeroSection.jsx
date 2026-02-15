@@ -81,14 +81,14 @@ export default function HeroSection() {
                   <div className="flex gap-4 justify-center">
                     <Link
                       href={slide.link}
-                      className="px-6 py-3 rounded-full bg-(--accent) text-(--text) font-semibold shadow hover:opacity-90 transition"
+                      className="lg:px-6 lg:py-3 px-3 py-2 rounded-full bg-(--accent) text-(--text) font-semibold shadow hover:opacity-90 transition"
                     >
                       {slide.primaryBtn}
                     </Link>
 
                     <Link
                       href="/about"
-                      className="px-6 py-3 rounded-full border border-white text-white font-semibold hover:bg-white hover:text-(--primary) transition"
+                      className="lg:px-6 lg:py-3 px-3 py-2 rounded-full border border-white text-white font-semibold hover:bg-white hover:text-(--primary) transition"
                     >
                       Learn More
                     </Link>
